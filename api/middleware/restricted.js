@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const secret = require('../../config/secret')
 
 module.exports = (req, res, next) => {
-  next();
   /*
     IMPLEMENT
 
@@ -18,7 +17,7 @@ module.exports = (req, res, next) => {
 
   if(!token) {
     res
-      .status(401)
+      .status(400)
       .json({ message: 'token required'})
   } else {
     jwt.verify(token, secret, (err, decoded) => {
