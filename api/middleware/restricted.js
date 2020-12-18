@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
 
   if(!token) {
     res
-      .status(400)
+      .status(401)
       .json({ message: 'token required'})
   } else {
     jwt.verify(token, secret, (err, decoded) => {
